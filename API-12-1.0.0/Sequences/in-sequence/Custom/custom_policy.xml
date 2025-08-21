@@ -1,0 +1,25 @@
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="custom_policy">
+
+
+  <property name="RemoteIP" expression="get-property('axis2', 'REMOTE_ADDR')"/>
+
+<property name="ForwardedFor" expression="get-property('transport', 'X-Forwarded-For')"/>
+
+ <property name="AllHeaders" expression="get-property('transport', 'ALL_HEADERS')"/>
+
+  <log level="custom">
+      <property name="Actual Remote Address"
+                                    expression="get-property('RemoteIP')"/>
+  </log>
+
+  <log level="custom">
+      <property name="ForwardedFor"
+                                    expression="get-property('ForwardedFor')"/>
+  </log>
+
+  <log level="custom">
+      <property name="AllHeaders"
+                                    expression="get-property('ALL_HEADERS')"/>
+  </log>
+
+</sequence>
